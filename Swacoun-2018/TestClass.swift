@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ObjectiveXML
+import MPWFoundation
 
 @objc class TestClass: NSObject, Codable {
     let hi:Int32

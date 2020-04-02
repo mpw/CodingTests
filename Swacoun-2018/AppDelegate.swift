@@ -8,10 +8,9 @@
 
 import Cocoa
 import MPWFoundation
-import ObjectiveXML
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class SwacounAppDelegate: NSObject, NSApplicationDelegate {
 
     var objects:[TestClass]=[]
     
