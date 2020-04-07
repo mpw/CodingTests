@@ -61,7 +61,7 @@
 		1F66B5D0243B8CA1009F354C /* AnyCodingKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCodingKey.swift; sourceTree = "<group>"; };
 		1F66B5DC243C7FAE009F354C /* TestClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestClass.h; sourceTree = "<group>"; };
 		1F66B5DD243C7FAE009F354C /* TestClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestClass.m; sourceTree = "<group>"; };
-		1FD445032435FEAA008CE0B9 /* Macoun-2018objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Macoun-2018objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FD445032435FEAA008CE0B9 /* CodingTestsObjc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingTestsObjc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD445052435FEAA008CE0B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1FD445062435FEAA008CE0B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1FD445082435FEAC008CE0B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		1FD4450D2435FEAC008CE0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FD4450E2435FEAC008CE0B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1FD445102435FEAC008CE0B9 /* Macoun_2018objc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macoun_2018objc.entitlements; sourceTree = "<group>"; };
-		1FFA190A214C10A100571663 /* Swacoun-2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swacoun-2018.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFA190A214C10A100571663 /* CodingTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFA190D214C10A100571663 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFA190F214C10A100571663 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1FFA1911214C10A300571663 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 			path = Decoder;
 			sourceTree = "<group>";
 		};
-		1FD445042435FEAA008CE0B9 /* Macoun-2018objc */ = {
+		1FD445042435FEAA008CE0B9 /* CodingTestsObjc */ = {
 			isa = PBXGroup;
 			children = (
 				1FD445052435FEAA008CE0B9 /* AppDelegate.h */,
@@ -149,14 +149,14 @@
 				1FD4450E2435FEAC008CE0B9 /* main.m */,
 				1FD445102435FEAC008CE0B9 /* Macoun_2018objc.entitlements */,
 			);
-			path = "Macoun-2018objc";
+			path = CodingTestsObjc;
 			sourceTree = "<group>";
 		};
 		1FFA1901214C10A000571663 = {
 			isa = PBXGroup;
 			children = (
-				1FFA190C214C10A100571663 /* Swacoun-2018 */,
-				1FD445042435FEAA008CE0B9 /* Macoun-2018objc */,
+				1FFA190C214C10A100571663 /* CodingTestsSwift */,
+				1FD445042435FEAA008CE0B9 /* CodingTestsObjc */,
 				1FFA190B214C10A100571663 /* Products */,
 				1FFA1924214C133E00571663 /* Frameworks */,
 			);
@@ -165,13 +165,13 @@
 		1FFA190B214C10A100571663 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1FFA190A214C10A100571663 /* Swacoun-2018.app */,
-				1FD445032435FEAA008CE0B9 /* Macoun-2018objc.app */,
+				1FFA190A214C10A100571663 /* CodingTests.app */,
+				1FD445032435FEAA008CE0B9 /* CodingTestsObjc.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1FFA190C214C10A100571663 /* Swacoun-2018 */ = {
+		1FFA190C214C10A100571663 /* CodingTestsSwift */ = {
 			isa = PBXGroup;
 			children = (
 				1F66B5C3243B8CA1009F354C /* MessagePack */,
@@ -183,7 +183,7 @@
 				1FFA1916214C10A300571663 /* Info.plist */,
 				1FFA1917214C10A300571663 /* Swacoun_2018.entitlements */,
 			);
-			path = "Swacoun-2018";
+			path = CodingTestsSwift;
 			sourceTree = "<group>";
 		};
 		1FFA1924214C133E00571663 /* Frameworks */ = {
@@ -198,9 +198,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1FD445022435FEAA008CE0B9 /* Macoun-2018objc */ = {
+		1FD445022435FEAA008CE0B9 /* CodingTestsObjc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1FD445112435FEAC008CE0B9 /* Build configuration list for PBXNativeTarget "Macoun-2018objc" */;
+			buildConfigurationList = 1FD445112435FEAC008CE0B9 /* Build configuration list for PBXNativeTarget "CodingTestsObjc" */;
 			buildPhases = (
 				1FD444FF2435FEAA008CE0B9 /* Sources */,
 				1FD445002435FEAA008CE0B9 /* Frameworks */,
@@ -211,14 +211,14 @@
 			);
 			dependencies = (
 			);
-			name = "Macoun-2018objc";
+			name = CodingTestsObjc;
 			productName = "Macoun-2018objc";
-			productReference = 1FD445032435FEAA008CE0B9 /* Macoun-2018objc.app */;
+			productReference = 1FD445032435FEAA008CE0B9 /* CodingTestsObjc.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1FFA1909214C10A100571663 /* Swacoun-2018 */ = {
+		1FFA1909214C10A100571663 /* CodingTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1FFA191A214C10A300571663 /* Build configuration list for PBXNativeTarget "Swacoun-2018" */;
+			buildConfigurationList = 1FFA191A214C10A300571663 /* Build configuration list for PBXNativeTarget "CodingTests" */;
 			buildPhases = (
 				1FFA1906214C10A100571663 /* Sources */,
 				1FFA1907214C10A100571663 /* Frameworks */,
@@ -228,9 +228,9 @@
 			);
 			dependencies = (
 			);
-			name = "Swacoun-2018";
+			name = CodingTests;
 			productName = "Swacoun-2018";
-			productReference = 1FFA190A214C10A100571663 /* Swacoun-2018.app */;
+			productReference = 1FFA190A214C10A100571663 /* CodingTests.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -256,7 +256,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1FFA1905214C10A000571663 /* Build configuration list for PBXProject "Swacoun-2018" */;
+			buildConfigurationList = 1FFA1905214C10A000571663 /* Build configuration list for PBXProject "CodingTests" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -269,8 +269,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1FFA1909214C10A100571663 /* Swacoun-2018 */,
-				1FD445022435FEAA008CE0B9 /* Macoun-2018objc */,
+				1FFA1909214C10A100571663 /* CodingTests */,
+				1FD445022435FEAA008CE0B9 /* CodingTestsObjc */,
 			);
 		};
 /* End PBXProject section */
@@ -361,13 +361,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				INFOPLIST_FILE = "Macoun-2018objc/Info.plist";
+				INFOPLIST_FILE = CodingTestsObjc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.metaobject.Macoun-2018objc";
+				PRODUCT_BUNDLE_IDENTIFIER = com.metaobject.CodingTestsObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -383,13 +383,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				INFOPLIST_FILE = "Macoun-2018objc/Info.plist";
+				INFOPLIST_FILE = CodingTestsObjc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.metaobject.Macoun-2018objc";
+				PRODUCT_BUNDLE_IDENTIFIER = com.metaobject.CodingTestsObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -515,12 +515,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Swacoun-2018/Info.plist";
+				INFOPLIST_FILE = CodingTestsSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.metaobject.Swacoun-2018";
+				PRODUCT_BUNDLE_IDENTIFIER = com.metaobject.CodingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -532,12 +532,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Swacoun-2018/Info.plist";
+				INFOPLIST_FILE = CodingTestsSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.metaobject.Swacoun-2018";
+				PRODUCT_BUNDLE_IDENTIFIER = com.metaobject.CodingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -546,7 +546,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1FD445112435FEAC008CE0B9 /* Build configuration list for PBXNativeTarget "Macoun-2018objc" */ = {
+		1FD445112435FEAC008CE0B9 /* Build configuration list for PBXNativeTarget "CodingTestsObjc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1FD445122435FEAC008CE0B9 /* Debug */,
@@ -555,7 +555,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1FFA1905214C10A000571663 /* Build configuration list for PBXProject "Swacoun-2018" */ = {
+		1FFA1905214C10A000571663 /* Build configuration list for PBXProject "CodingTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1FFA1918214C10A300571663 /* Debug */,
@@ -564,7 +564,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1FFA191A214C10A300571663 /* Build configuration list for PBXNativeTarget "Swacoun-2018" */ = {
+		1FFA191A214C10A300571663 /* Build configuration list for PBXNativeTarget "CodingTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1FFA191B214C10A300571663 /* Debug */,
