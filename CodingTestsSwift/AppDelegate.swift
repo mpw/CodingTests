@@ -28,7 +28,9 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         writer.close()
         return data as Data
     }
-    
+
+
+
     func writeBPListViaStream() -> Data {
         NSLog("BPList Stream Encode")
         let data=NSMutableData()
@@ -59,6 +61,13 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         let array=try! coder.decode([TestClass].self, from: data)
         return array
     }
+
+    func readSTJSON(data:Data) -> [Any] {
+        var p = STJSONParser(data: data)
+        let o = try! p.parse()
+        return o as! [Any]
+    }
+
     func writeJSONSerialization() -> Data {
         NSLog("NSJSONSerialization, create plist")
         let plist=self.objects.map { $0.asDictionary() }
@@ -93,7 +102,8 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
     func decodeTest() {
         let data = try! Data(contentsOf: fileurl())
         let start =  Date.timeIntervalSinceReferenceDate
-        let array = readJSONCoder( data:data )
+        //        let array = readJSONCoder( data:data )
+        let array = readSTJSON( data:data )
         let decodeTime = Date.timeIntervalSinceReferenceDate - start
         NSLog("array with %ld elements",array.count)
         NSLog("did decode in %g seconds",decodeTime)

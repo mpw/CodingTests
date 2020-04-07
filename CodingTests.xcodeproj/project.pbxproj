@@ -19,6 +19,7 @@
 		1F66B5DA243B8CA1009F354C /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F66B5CF243B8CA1009F354C /* Box.swift */; };
 		1F66B5DB243B8CA1009F354C /* AnyCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F66B5D0243B8CA1009F354C /* AnyCodingKey.swift */; };
 		1F66B5DE243C7FAE009F354C /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F66B5DD243C7FAE009F354C /* TestClass.m */; };
+		1F66B5E0243CA324009F354C /* STJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F66B5DF243CA324009F354C /* STJSONParser.swift */; };
 		1FD445072435FEAA008CE0B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD445062435FEAA008CE0B9 /* AppDelegate.m */; };
 		1FD445092435FEAC008CE0B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FD445082435FEAC008CE0B9 /* Assets.xcassets */; };
 		1FD4450C2435FEAC008CE0B9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FD4450A2435FEAC008CE0B9 /* MainMenu.xib */; };
@@ -61,6 +62,7 @@
 		1F66B5D0243B8CA1009F354C /* AnyCodingKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCodingKey.swift; sourceTree = "<group>"; };
 		1F66B5DC243C7FAE009F354C /* TestClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestClass.h; sourceTree = "<group>"; };
 		1F66B5DD243C7FAE009F354C /* TestClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestClass.m; sourceTree = "<group>"; };
+		1F66B5DF243CA324009F354C /* STJSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = STJSONParser.swift; path = MessagePack/Sources/STJSONParser.swift; sourceTree = SOURCE_ROOT; };
 		1FD445032435FEAA008CE0B9 /* CodingTestsObjc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingTestsObjc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD445052435FEAA008CE0B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1FD445062435FEAA008CE0B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		1FFA190C214C10A100571663 /* CodingTestsSwift */ = {
 			isa = PBXGroup;
 			children = (
+				1F66B5DF243CA324009F354C /* STJSONParser.swift */,
 				1F66B5C3243B8CA1009F354C /* MessagePack */,
 				1FFA190D214C10A100571663 /* AppDelegate.swift */,
 				1FFA1929214C16A900571663 /* TestClass.swift */,
@@ -318,6 +321,7 @@
 				1F66B5D8243B8CA1009F354C /* MessagePackDecoder.swift in Sources */,
 				1FFA1910214C10A100571663 /* ViewController.swift in Sources */,
 				1F66B5DA243B8CA1009F354C /* Box.swift in Sources */,
+				1F66B5E0243CA324009F354C /* STJSONParser.swift in Sources */,
 				1F66B5D9243B8CA1009F354C /* UnkeyedDecodingContainer.swift in Sources */,
 				1FFA192A214C16A900571663 /* TestClass.swift in Sources */,
 				1F66B5D2243B8CA1009F354C /* UnkeyedEncodingContainer.swift in Sources */,
