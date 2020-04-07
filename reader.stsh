@@ -1,0 +1,5 @@
+#!/usr/local/bin/stsh
+framework:ObjectiveXML load
+parser := MPWMASONParser parser.
+array := parser parsedData: file:/tmp/swlist.json
+stdout println:array count.

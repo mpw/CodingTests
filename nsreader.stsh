@@ -1,0 +1,3 @@
+#!/usr/local/bin/stsh
+array := NSJSONSerialization JSONObjectWithData: file:/tmp/swlist.json options:0 error:nil.
+stdout println:array count.
