@@ -1,0 +1,5 @@
+digraph {
+    node [shape=rect style=rounded];
+    rankdir=LR;
+    JSON -> Objects
+}

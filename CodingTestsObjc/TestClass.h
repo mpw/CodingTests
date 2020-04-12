@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) long hi,there;
 @property (nonatomic,strong) NSString *comment;
 
+-initWithHi:(long)newHi there:(long)newThere comment:(NSString*)newComment;
+
 
 @end
 

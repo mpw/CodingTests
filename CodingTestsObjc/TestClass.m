@@ -10,6 +10,16 @@
 
 @implementation TestClass
 
+-initWithHi:(long)newHi there:(long)newThere comment:(NSString*)newComment
+{
+    if ( self=[super init]) {
+        _hi = newHi;
+        _there = newThere;
+        self.comment = newComment;
+    }
+    return self;
+}
+
 -(NSString *)description
 {
     return [NSString stringWithFormat:@"<%@:%p: hi: %ld there: %ld \"%@\">",[self class],self,self.hi,self.there,self.comment];

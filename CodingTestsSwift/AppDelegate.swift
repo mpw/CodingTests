@@ -8,6 +8,9 @@
 
 import Cocoa
 import MPWFoundation
+import JASON
+import ZippyJSON
+
 
 @NSApplicationMain
 class SwacounAppDelegate: NSObject, NSApplicationDelegate {
@@ -15,7 +18,7 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
     var objects:[TestClass]=[]
     
     func createObjects() {
-        for i:Int32 in 1...1000000 {
+        for i:Int32 in 1...10 {
             objects.append(TestClass(hi: i, there: i*2, comment: "comment"))
         }
     }
@@ -48,6 +51,18 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         return data
     }
 
+    func readMessagePack(data:Data) -> [TestClass] {
+        NSLog("Message Pack (Swift) Decoding")
+        let coder=MessagePackDecoder( )
+        let array=try! coder.decode([TestClass].self, from: data)
+        return array
+    }
+
+    func readJASON(data:Data )  -> [Any] {
+        NSLog("JASON Coding")
+        let objects=JSON( data )
+        return objects.array!
+    }
     
     func writeJSONCoder() -> Data {
         NSLog("Swift Coding")
@@ -55,9 +70,22 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         let data=try! coder.encode(objects)
         return data
     }
+//    func writePureJSONCoder() -> Data {
+//        NSLog("PureJSONCoder() -> Data {")
+//        let coder=PureJSONEncoder()
+//        let data=try! coder.encode(objects)
+//        return Data(bytes:data, count:data.count )
+//    }
     func readJSONCoder(data:Data) -> [TestClass] {
         NSLog("Swift Decoding")
         let coder=JSONDecoder( )
+        let array=try! coder.decode([TestClass].self, from: data)
+        return array
+    }
+
+    func readZippyCoder(data:Data) -> [TestClass] {
+        NSLog("Zippy Decoding")
+        let coder=ZippyJSONDecoder( )
         let array=try! coder.decode([TestClass].self, from: data)
         return array
     }
@@ -74,6 +102,11 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         NSLog("NSJSONSerialization, encode the plist")
         return try! JSONSerialization.data(withJSONObject: plist, options: [])
     }
+    func readJSONSerialization(data:Data) -> [Any]  {
+        NSLog("NSJSONSerialization, decode data to plist")
+        let array = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! [Any]
+        return array
+    }
 
     func fileurl() -> URL {
         URL(fileURLWithPath: "/tmp/swlist.msgpack")
@@ -84,9 +117,10 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         createObjects()
         let start =  Date.timeIntervalSinceReferenceDate;
         //        let data = writeJSONViaStream()
-        //let data = messagePack()
-              let data = writeJSONCoder()
-        //        let data = writeBPListViaStream()
+//        let data = messagePack()
+        let data = writeJSONCoder()
+//        let data = writePureJSONCoder()
+     //        let data = writeBPListViaStream()
         //      let data = writeJSONSerialization()
         let encodeTime = Date.timeIntervalSinceReferenceDate - start
         NSLog("did encode in %g seconds, write",encodeTime)
@@ -100,17 +134,24 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func decodeTest() {
+        NSLog("decodeTest")
         let data = try! Data(contentsOf: fileurl())
         let start =  Date.timeIntervalSinceReferenceDate
-        //        let array = readJSONCoder( data:data )
-        let array = readSTJSON( data:data )
+//        let array = readJSONCoder( data:data )
+        let array = readZippyCoder( data:data )
+
+//        let array = readMessagePack( data:data )
+//        let array = readSTJSON( data:data )
+//        let array = readJASON(data: data)
+//        let array = readJSONSerialization(data:data)
         let decodeTime = Date.timeIntervalSinceReferenceDate - start
         NSLog("array with %ld elements",array.count)
+        print("elements[0]=\(array[0])")
         NSLog("did decode in %g seconds",decodeTime)
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        decodeTest()
+       decodeTest()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

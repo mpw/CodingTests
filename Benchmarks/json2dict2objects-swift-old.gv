@@ -1,0 +1,6 @@
+digraph {
+    node [shape=rect style=rounded];
+    rankdir=LR;
+    JSON -> Dicts [label=JSONSerialization]
+    Dicts -> Objects [label="Swift 'parsers'"]
+}
