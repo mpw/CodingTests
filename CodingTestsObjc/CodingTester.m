@@ -180,7 +180,6 @@ MPWRusage *first = nil;
 {
     NSData *json=[NSData dataWithContentsOfFile:@"/tmp/swlist.json" options:0 error:nil];
     NSLog(@"got data with %ld bytes",[json length]);
-    NSLog(@"class %@",[@"hi" class]);
 //    NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
     MPWRusage* start=[MPWRusage current];
 //    [self decodeMPWViaDictsAndKVC:json];
@@ -189,9 +188,9 @@ MPWRusage *first = nil;
   //  [self decodeNSJSONAndKVC:json];
 //    [self decodeNSJSONSerialisationAndKVC:json];
 //    [self decodeMPWDirect:json];
-    [self decodeMPWDirectStream:json];
+//    [self decodeMPWDirectStream:json];
 
-//    [self decodeMPWArrays:json];
+    [self decodeMPWArrays:json];
 
 //    [self createDicts];
 //    [self createObjects];

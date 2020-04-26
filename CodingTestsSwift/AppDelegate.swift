@@ -178,7 +178,7 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-       decodeTest()
+       encodeTest()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
