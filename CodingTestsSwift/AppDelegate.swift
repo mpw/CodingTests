@@ -18,7 +18,7 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
     var objects:[TestClass]=[]
     
     func createObjects() {
-        for i:Int32 in 1...10 {
+        for i:Int in 1...1000000 {
             objects.append(TestClass(hi: i, there: i*2, comment: "comment"))
         }
     }
@@ -83,6 +83,23 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         return array
     }
 
+    func readPureJSONCoder(data:Data) -> [TestClass] {
+        NSLog("PurerSwift Decoding")
+        let coder=PureJSONDecoder( )
+        let array=try! coder.decode([TestClass].self, from: data)
+        return array
+    }
+
+    func readPureJSONParser(data:Data) -> [Any] {
+        NSLog("PurerSwift Parsing")
+        let value=try! JSONParser().parse(bytes: data )
+        guard case .array(let array) = value else {
+            return ["Parse error"]
+        }
+
+        return array
+    }
+
     func readZippyCoder(data:Data) -> [TestClass] {
         NSLog("Zippy Decoding")
         let coder=ZippyJSONDecoder( )
@@ -108,8 +125,15 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         return array
     }
 
+    func readMPWDirect(data:Data) -> [Any]  {
+        let parser=MPWMASONParser(with: TestClass.self)
+        let result=parser?.parsedData(data)
+        return result as! [Any]
+    }
+
+
     func fileurl() -> URL {
-        URL(fileURLWithPath: "/tmp/swlist.msgpack")
+        URL(fileURLWithPath: "/tmp/swlist.json")
     }
 
     func encodeTest() {
@@ -137,13 +161,16 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         NSLog("decodeTest")
         let data = try! Data(contentsOf: fileurl())
         let start =  Date.timeIntervalSinceReferenceDate
-//        let array = readJSONCoder( data:data )
-        let array = readZippyCoder( data:data )
+        let array = readJSONCoder( data:data )
+//        let array = readZippyCoder( data:data )
+//        let array = readPureJSONCoder(data: data)
+//        let array = readPureJSONParser(data: data)
 
 //        let array = readMessagePack( data:data )
 //        let array = readSTJSON( data:data )
 //        let array = readJASON(data: data)
 //        let array = readJSONSerialization(data:data)
+//        let array=readMPWDirect(data:data)
         let decodeTime = Date.timeIntervalSinceReferenceDate - start
         NSLog("array with %ld elements",array.count)
         print("elements[0]=\(array[0])")

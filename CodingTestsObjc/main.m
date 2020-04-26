@@ -7,10 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CodingTester.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.
     }
-    return NSApplicationMain(argc, argv);
+    CodingTester *tester=[CodingTester new];
+    [tester decodeTest];
 }

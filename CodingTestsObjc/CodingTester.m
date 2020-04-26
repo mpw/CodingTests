@@ -6,22 +6,30 @@
 //  Copyright © 2020 metaobject. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "CodingTester.h"
 #import "TestClass.h"
+#import "MPWArraysBuilder.h"
+
 
 @import MPWFoundation;
 
-@interface AppDelegate ()
+@interface CodingTester ()
 
 @property (weak) IBOutlet NSWindow *window;
 @end
 
-@implementation AppDelegate
+@implementation CodingTester
 
 -(void)decodeNSJSON:(NSData*)json
 {
     NSArray *plistResult=[NSJSONSerialization JSONObjectWithData:json options:0 error:nil];
-    NSLog(@"NSJSON %@ with %ld objects",plistResult[0],[plistResult count]);
+    NSDictionary *first=[plistResult firstObject];
+//    NSLog(@"NSJSON %@ with %ld objects",first,[plistResult count]);
+//    NSLog(@"class of dict: '%s'",class_getName(object_getClass(first)));
+//    for (id key in [first allKeys]) {
+//        NSLog(@"key: %@ %p '%s'",key,key,class_getName(object_getClass(key)));
+//    }
+
 }
 
 -(void)decodeNSJSONAndKVC:(NSData*)json
@@ -101,27 +109,65 @@
 
 -(void)decodeMPWDicts:(NSData*)json
 {
-    NSArray *keys=@[ @"hi", @"there", @"comment"];
     MPWMASONParser *parser=[MPWMASONParser parser];
-    [parser setFrequentStrings:keys];
-    [parser setBuilder:nil];
+    [parser setFrequentStrings:@[ @"hi", @"there", @"comment"]];
+//    [parser setBuilder:nil];
     NSArray* plistResult = [parser parsedData:json];
-    NSArray *objResult=plistResult;
-    NSLog(@"MPWMASON %@ with %ld dicts",[objResult firstObject],[objResult count]);
+    NSDictionary *first=[plistResult firstObject];
+    NSLog(@"MPWMASON %@ with %ld dicts",first,[plistResult count]);
+   NSLog(@"class of dict: '%s'",class_getName(object_getClass(first)));
+//    for (id key in [first allKeys]) {
+//        NSLog(@"key: %@ %p '%s'",key,key,class_getName(object_getClass(key)));
+//    }
 }
 
 -(void)decodeMPWDirect:(NSData*)json
 {
-    @autoreleasepool {
-        NSArray *keys=@[ @"hi", @"there", @"comment"];
-        MPWMASONParser *parser=[MPWMASONParser parser];
-        MPWObjectBuilder *builder=[[MPWObjectBuilder alloc] initWithClass:[TestClass class]];
-        builder.streamingThreshold=1;
-        [parser setBuilder:builder];
-        [parser setFrequentStrings:keys];
-        NSArray* objResult = [parser parsedData:json];
-        NSLog(@"MPWMASON %@ with %ld elements",[objResult firstObject],[objResult count]);
+    MPWMASONParser *parser=[[MPWMASONParser alloc] initWithClass:[TestClass class]];
+    NSArray* objResult = [parser parsedData:json];
+//    NSLog(@"MPWMASON %@ with %ld elements",[objResult firstObject],[objResult count]);
+}
+
+static long objCount=0;
+static long hiCount=0;
+MPWRusage *first = nil;
+
+-(void)writeObject:(TestClass*)anObject
+{
+    if (!first) {
+        first=[MPWRusage current];
     }
+    objCount++;
+    hiCount+=anObject.hi;
+}
+
+-(void)decodeMPWDirectStream:(NSData*)json
+{
+    MPWMASONParser *parser=[[MPWMASONParser alloc] initWithClass:[TestClass class]];
+    MPWObjectBuilder *builder=(MPWObjectBuilder*)[parser builder];
+    [builder setStreamingThreshold:1];
+    [builder setTarget:self];
+    [parser parsedData:json];
+//    NSLog(@"objCount: %ld, hiCount: %ld",objCount,hiCount);
+}
+
+-(void)decodeMPWArrays:(NSData*)json
+{
+    NSArray *keys=@[ @"hi", @"there", @"comment"];
+    MPWIntArray *hi=[MPWIntArray array];
+    MPWIntArray *there=[MPWIntArray array];
+    NSMutableArray *comments=[NSMutableArray array];
+    NSArray *arrays=@[hi,there,comments];
+    MPWArraysBuilder *builder=[[MPWArraysBuilder alloc] initWithArays:arrays
+
+                                                           forKeys:keys];
+    MPWMASONParser *parser=[MPWMASONParser parser];
+    [parser setBuilder:builder];
+    [parser setFrequentStrings:keys];
+    //    [parser setBuilder:nil];
+
+    NSArray* objResult = [parser parsedData:json];
+//    NSLog(@"arrays: %@",arrays);
 }
 
 -(void)decodeApple:(NSData*)json
@@ -134,28 +180,27 @@
 {
     NSData *json=[NSData dataWithContentsOfFile:@"/tmp/swlist.json" options:0 error:nil];
     NSLog(@"got data with %ld bytes",[json length]);
-    NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+    NSLog(@"class %@",[@"hi" class]);
+//    NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+    MPWRusage* start=[MPWRusage current];
 //    [self decodeMPWViaDictsAndKVC:json];
-//        [self decodeMPWDicts:json];
-//    [self decodeNSJSON:json];
-//    [self decodeNSJSONAndKVC:json];
+//      [self decodeMPWDicts:json];
+//      [self decodeNSJSON:json];
+  //  [self decodeNSJSONAndKVC:json];
 //    [self decodeNSJSONSerialisationAndKVC:json];
-    [self decodeMPWDirect:json];
+//    [self decodeMPWDirect:json];
+    [self decodeMPWDirectStream:json];
+
+//    [self decodeMPWArrays:json];
+
 //    [self createDicts];
 //    [self createObjects];
-
-    NSTimeInterval decodeTime = [NSDate timeIntervalSinceReferenceDate] - start;
-    NSLog(@"real time to decode: %g",decodeTime);
+    MPWRusage* rtime=[MPWRusage timeRelativeTo:start];
+    if ( first ) {
+        first=[first subtractStartTime:start];
+        NSLog(@"user time to first: %ld µs",[first userMicroseconds]);
+    }
+    NSLog(@"user time to decode: %ld ms",[rtime userMicroseconds]/1000);
 }
-
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [self decodeTest];
-}
-
-
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
-}
-
 
 @end

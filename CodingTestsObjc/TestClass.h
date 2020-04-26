@@ -6,11 +6,11 @@
 //  Copyright © 2020 metaobject. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <MPWFoundation/MPWFoundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TestClass : NSObject
+@interface TestClass : MPWObject
 
 @property (nonatomic) long hi,there;
 @property (nonatomic,strong) NSString *comment;
