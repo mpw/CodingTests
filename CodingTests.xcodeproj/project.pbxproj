@@ -47,6 +47,7 @@
 		1FD4450F2435FEAC008CE0B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4450E2435FEAC008CE0B9 /* main.m */; };
 		1FD445142435FF53008CE0B9 /* MPWFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA1925214C133E00571663 /* MPWFoundation.framework */; };
 		1FF556F82451FA6B006B8E0F /* MPWArraysBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF556F72451FA6B006B8E0F /* MPWArraysBuilder.m */; };
+		1FF556FA2456AE5D006B8E0F /* ObjectiveSmalltalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF556F92456AE5D006B8E0F /* ObjectiveSmalltalk.framework */; };
 		1FFA190E214C10A100571663 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA190D214C10A100571663 /* AppDelegate.swift */; };
 		1FFA1910214C10A100571663 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA190F214C10A100571663 /* ViewController.swift */; };
 		1FFA1912214C10A300571663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FFA1911214C10A300571663 /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		1FD445102435FEAC008CE0B9 /* Macoun_2018objc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macoun_2018objc.entitlements; sourceTree = "<group>"; };
 		1FF556F62451FA6B006B8E0F /* MPWArraysBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPWArraysBuilder.h; sourceTree = "<group>"; };
 		1FF556F72451FA6B006B8E0F /* MPWArraysBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPWArraysBuilder.m; sourceTree = "<group>"; };
+		1FF556F92456AE5D006B8E0F /* ObjectiveSmalltalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectiveSmalltalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFA190A214C10A100571663 /* CodingTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFA190D214C10A100571663 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFA190F214C10A100571663 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF556FA2456AE5D006B8E0F /* ObjectiveSmalltalk.framework in Frameworks */,
 				1F66B6A6243D0E8A009F354C /* JASON.framework in Frameworks */,
 				1FFA1926214C133E00571663 /* MPWFoundation.framework in Frameworks */,
 				1FB14C862442346D0083611C /* ZippyJSON in Frameworks */,
@@ -327,6 +330,7 @@
 		1FFA1924214C133E00571663 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FF556F92456AE5D006B8E0F /* ObjectiveSmalltalk.framework */,
 				1FFA1925214C133E00571663 /* MPWFoundation.framework */,
 			);
 			name = Frameworks;

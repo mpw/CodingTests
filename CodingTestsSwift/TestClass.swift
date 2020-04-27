@@ -10,9 +10,9 @@ import Foundation
 import MPWFoundation
 
 @objc class TestClass: MPWObject, Codable {
-    var hi:Int
-    var there:Int
-    var comment:String
+    @objc var hi:Int
+    @objc var there:Int
+    @objc var comment:String
 
 
     init( hi:Int , there:Int, comment:String ) {

@@ -8,6 +8,7 @@
 
 import Cocoa
 import MPWFoundation
+import ObjectiveSmalltalk
 import JASON
 import ZippyJSON
 
@@ -161,7 +162,7 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         NSLog("decodeTest")
         let data = try! Data(contentsOf: fileurl())
         let start =  Date.timeIntervalSinceReferenceDate
-        let array = readJSONCoder( data:data )
+//        let array = readJSONCoder( data:data )
 //        let array = readZippyCoder( data:data )
 //        let array = readPureJSONCoder(data: data)
 //        let array = readPureJSONParser(data: data)
@@ -170,7 +171,7 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
 //        let array = readSTJSON( data:data )
 //        let array = readJASON(data: data)
 //        let array = readJSONSerialization(data:data)
-//        let array=readMPWDirect(data:data)
+        let array=readMPWDirect(data:data)
         let decodeTime = Date.timeIntervalSinceReferenceDate - start
         NSLog("array with %ld elements",array.count)
         print("elements[0]=\(array[0])")
@@ -178,7 +179,10 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-       encodeTest()
+        let mirror=MPWClassMirror.init(with: TestClass.self)!
+        let methods=mirror.methodMirrors()!
+        print("methods: \(methods)")
+        decodeTest()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
