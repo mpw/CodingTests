@@ -9,7 +9,8 @@
 #import "CodingTester.h"
 #import "TestClass.h"
 #import "MPWArraysBuilder.h"
-
+#import "MPWJSONUnarchiver.h"
+#import "MPWMediathekBuilder.h"
 
 @import MPWFoundation;
 
@@ -23,8 +24,8 @@
 -(void)decodeNSJSON:(NSData*)json
 {
     NSArray *plistResult=[NSJSONSerialization JSONObjectWithData:json options:0 error:nil];
-    NSDictionary *first=[plistResult firstObject];
-//    NSLog(@"NSJSON %@ with %ld objects",first,[plistResult count]);
+//    NSDictionary *first=[plistResult firstObject];
+        NSLog(@"NSJSON %@ with %ld objects",[plistResult class],[plistResult count]);
 //    NSLog(@"class of dict: '%s'",class_getName(object_getClass(first)));
 //    for (id key in [first allKeys]) {
 //        NSLog(@"key: %@ %p '%s'",key,key,class_getName(object_getClass(key)));
@@ -104,21 +105,38 @@
 #else
     NSArray *objResult=plistResult;
 #endif
+
     NSLog(@"MPWMASON %@ with %ld objects",objResult[0],[objResult count]);
 }
 
 -(void)decodeMPWDicts:(NSData*)json
 {
     MPWMASONParser *parser=[MPWMASONParser parser];
-    [parser setFrequentStrings:@[ @"hi", @"there", @"comment"]];
-//    [parser setBuilder:nil];
+    //    [parser setFrequentStrings:@[ @"hi", @"there", @"comment"]];
+    [parser setFrequentStrings:@[ @"X"]];
+
+    [parser setBuilder:nil];
     NSArray* plistResult = [parser parsedData:json];
-    NSDictionary *first=[plistResult firstObject];
-    NSLog(@"MPWMASON %@ with %ld dicts",first,[plistResult count]);
-   NSLog(@"class of dict: '%s'",class_getName(object_getClass(first)));
-//    for (id key in [first allKeys]) {
-//        NSLog(@"key: %@ %p '%s'",key,key,class_getName(object_getClass(key)));
-//    }
+    NSLog(@"MPWMASON %@ %ld dicts",[plistResult class],[plistResult count]);
+    //   NSLog(@"class of dict: '%s'",class_getName(object_getClass(first)));
+    //    for (id key in [first allKeys]) {
+    //        NSLog(@"key: %@ %p '%s'",key,key,class_getName(object_getClass(key)));
+    //    }
+}
+
+-(void)decodeMediathek:(NSData*)json
+{
+    MPWMASONParser *parser=[MPWMASONParser parser];
+    //    [parser setFrequentStrings:@[ @"hi", @"there", @"comment"]];
+    [parser setFrequentStrings:@[ @"X"]];
+
+    [parser setBuilder:nil];
+    NSArray* plistResult = [parser parsedData:json];
+    NSLog(@"Mediathek %@ %ld dicts",[plistResult class],[plistResult count]);
+    //   NSLog(@"class of dict: '%s'",class_getName(object_getClass(first)));
+    //    for (id key in [first allKeys]) {
+    //        NSLog(@"key: %@ %p '%s'",key,key,class_getName(object_getClass(key)));
+    //    }
 }
 
 -(void)decodeMPWDirect:(NSData*)json
@@ -176,21 +194,36 @@ MPWRusage *first = nil;
     NSLog(@"NSJSON %@ with %ld elements",[result class],[(NSArray*)result count]);
 }
 
+-(void)decodeMPWJSONUnarchiver:(NSData*)json
+{
+    MPWJSONUnarchiver *unarchiver=[[MPWJSONUnarchiver alloc] initForReadingFromData:json error:nil];
+    id result=[unarchiver decodeObject];
+    NSLog(@"MPWJSONUnarchiver %@ with %ld elements",[result class],[(NSArray*)result count]);
+    NSLog(@"MPWJSONUnarchiver %@ ",[result firstObject]);
+    NSLog(@"MPWJSONUnarchiver %@ ",[result lastObject]);
+}
+
 -(void)decodeTest
 {
-    NSData *json=[NSData dataWithContentsOfFile:@"/tmp/swlist.json" options:0 error:nil];
+ //   NSData *json=[NSData dataWithContentsOfFile:@"/tmp/swlist.json" options:0 error:nil];
+    NSLog(@"-decodeTest before read data");
+   NSData *json=[NSData dataWithContentsOfFile:@"/tmp/filmliste.txt" options:0 error:nil];
     NSLog(@"got data with %ld bytes",[json length]);
 //    NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
     MPWRusage* start=[MPWRusage current];
 //    [self decodeMPWViaDictsAndKVC:json];
-//      [self decodeMPWDicts:json];
+//    [self decodeMPWDicts:json];
+    [self decodeMediathek:json];
+
 //      [self decodeNSJSON:json];
   //  [self decodeNSJSONAndKVC:json];
 //    [self decodeNSJSONSerialisationAndKVC:json];
 //    [self decodeMPWDirect:json];
 //    [self decodeMPWDirectStream:json];
 
-    [self decodeMPWArrays:json];
+
+//    [self decodeMPWJSONUnarchiver:json];
+//    [self decodeMPWArrays:json];
 
 //    [self createDicts];
 //    [self createObjects];

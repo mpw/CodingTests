@@ -25,4 +25,13 @@
     return [NSString stringWithFormat:@"<%@:%p: hi: %ld there: %ld \"%@\">",[self class],self,self.hi,self.there,self.comment];
 }
 
+-(instancetype)initWithCoder:(NSCoder*)aCoder
+{
+    self.hi = [aCoder decodeIntForKey:@"hi"];
+    self.there = [aCoder decodeIntForKey:@"there"];
+    self.comment = [aCoder decodeObjectForKey:@"comment"];
+    return self;
+}
+
+
 @end

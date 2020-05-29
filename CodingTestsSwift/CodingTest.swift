@@ -10,11 +10,9 @@ import Cocoa
 import MPWFoundation
 import ObjectiveSmalltalk
 import JASON
-import ZippyJSON
 
 
-@NSApplicationMain
-class SwacounAppDelegate: NSObject, NSApplicationDelegate {
+class CodingTests: NSObject {
 
     var objects:[TestClass]=[]
     
@@ -101,12 +99,12 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
         return array
     }
 
-    func readZippyCoder(data:Data) -> [TestClass] {
-        NSLog("Zippy Decoding")
-        let coder=ZippyJSONDecoder( )
-        let array=try! coder.decode([TestClass].self, from: data)
-        return array
-    }
+//    func readZippyCoder(data:Data) -> [TestClass] {
+//        NSLog("Zippy Decoding")
+//        let coder=ZippyJSONDecoder( )
+//        let array=try! coder.decode([TestClass].self, from: data)
+//        return array
+//    }
 
     func readSTJSON(data:Data) -> [Any] {
         var p = STJSONParser(data: data)
@@ -161,7 +159,7 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
     func decodeTest() {
         NSLog("decodeTest")
         let data = try! Data(contentsOf: fileurl())
-        let start =  Date.timeIntervalSinceReferenceDate
+        let start =  MPWRusage.current()!
 //        let array = readJSONCoder( data:data )
 //        let array = readZippyCoder( data:data )
 //        let array = readPureJSONCoder(data: data)
@@ -172,10 +170,10 @@ class SwacounAppDelegate: NSObject, NSApplicationDelegate {
 //        let array = readJASON(data: data)
 //        let array = readJSONSerialization(data:data)
         let array=readMPWDirect(data:data)
-        let decodeTime = Date.timeIntervalSinceReferenceDate - start
+        let decodeTime = MPWRusage.timeRelative(to: start)!
         NSLog("array with %ld elements",array.count)
         print("elements[0]=\(array[0])")
-        NSLog("did decode in %g seconds",decodeTime)
+        NSLog("did decode in %ld ms",decodeTime.userMicroseconds()/1000)
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
