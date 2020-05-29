@@ -21,6 +21,7 @@
 		1FD4450F2435FEAC008CE0B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4450E2435FEAC008CE0B9 /* main.m */; };
 		1FD445142435FF53008CE0B9 /* MPWFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA1925214C133E00571663 /* MPWFoundation.framework */; };
 		1FE5B7BC24813EC300D86AFD /* MPWMediathekBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5B7BB24813EC300D86AFD /* MPWMediathekBuilder.m */; };
+		1FE5B7BF2481448400D86AFD /* MPWMediathekFilm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5B7BE2481448400D86AFD /* MPWMediathekFilm.m */; };
 		1FF556F82451FA6B006B8E0F /* MPWArraysBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF556F72451FA6B006B8E0F /* MPWArraysBuilder.m */; };
 		1FF5571324570A21006B8E0F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5571224570A21006B8E0F /* main.swift */; };
 		1FF5571724570A90006B8E0F /* CodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA190D214C10A100571663 /* CodingTest.swift */; };
@@ -120,6 +121,8 @@
 		1FD445102435FEAC008CE0B9 /* Macoun_2018objc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macoun_2018objc.entitlements; sourceTree = "<group>"; };
 		1FE5B7BA24813EC300D86AFD /* MPWMediathekBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPWMediathekBuilder.h; sourceTree = "<group>"; };
 		1FE5B7BB24813EC300D86AFD /* MPWMediathekBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPWMediathekBuilder.m; sourceTree = "<group>"; };
+		1FE5B7BD2481448400D86AFD /* MPWMediathekFilm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPWMediathekFilm.h; sourceTree = "<group>"; };
+		1FE5B7BE2481448400D86AFD /* MPWMediathekFilm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPWMediathekFilm.m; sourceTree = "<group>"; };
 		1FF556F62451FA6B006B8E0F /* MPWArraysBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPWArraysBuilder.h; sourceTree = "<group>"; };
 		1FF556F72451FA6B006B8E0F /* MPWArraysBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPWArraysBuilder.m; sourceTree = "<group>"; };
 		1FF556F92456AE5D006B8E0F /* ObjectiveSmalltalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectiveSmalltalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,6 +282,8 @@
 				1FD445102435FEAC008CE0B9 /* Macoun_2018objc.entitlements */,
 				1FE5B7BA24813EC300D86AFD /* MPWMediathekBuilder.h */,
 				1FE5B7BB24813EC300D86AFD /* MPWMediathekBuilder.m */,
+				1FE5B7BD2481448400D86AFD /* MPWMediathekFilm.h */,
+				1FE5B7BE2481448400D86AFD /* MPWMediathekFilm.m */,
 			);
 			path = CodingTestsObjc;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				1FF556F82451FA6B006B8E0F /* MPWArraysBuilder.m in Sources */,
 				1F9DE6FB245AF51600328A3F /* MPWJSONUnarchiver.m in Sources */,
 				1FD445072435FEAA008CE0B9 /* CodingTester.m in Sources */,
+				1FE5B7BF2481448400D86AFD /* MPWMediathekFilm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

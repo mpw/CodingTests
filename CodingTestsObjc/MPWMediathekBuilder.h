@@ -10,7 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+
 @interface MPWMediathekBuilder : MPWPListBuilder
+
+@property (nonatomic,strong) NSArray *keys;
+@property (nonatomic,strong) NSMutableArray *rows;
+
 
 @end
 

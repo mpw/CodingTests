@@ -129,10 +129,10 @@
     MPWMASONParser *parser=[MPWMASONParser parser];
     //    [parser setFrequentStrings:@[ @"hi", @"there", @"comment"]];
     [parser setFrequentStrings:@[ @"X"]];
-
-    [parser setBuilder:nil];
+    MPWMediathekBuilder *builder=[MPWMediathekBuilder builder];
+    [parser setBuilder:builder];
     NSArray* plistResult = [parser parsedData:json];
-    NSLog(@"Mediathek %@ %ld dicts",[plistResult class],[plistResult count]);
+    NSLog(@"Mediathek %@ first film: %@",builder,builder.rows.firstObject);
     //   NSLog(@"class of dict: '%s'",class_getName(object_getClass(first)));
     //    for (id key in [first allKeys]) {
     //        NSLog(@"key: %@ %p '%s'",key,key,class_getName(object_getClass(key)));
