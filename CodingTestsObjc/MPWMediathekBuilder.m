@@ -11,8 +11,9 @@
 
 @interface MPWMediathekBuilder()
 
-@property (nonatomic, strong) NSArray *currentFilm;
-
+@property (nonatomic, strong) MPWMediathekFilm *currentFilm;
+@property (nonatomic, strong) NSString *sender;
+@property (nonatomic, assign) int attributeIndex;
 @end
 
 @implementation MPWMediathekBuilder
@@ -29,33 +30,63 @@
 
 -(void)beginArray
 {
-    NSMutableArray *container=[[NSMutableArray alloc] init];
-    if ( [[self key] isEqualToString:@"X"]) {
-        self.currentFilm = container;
+    BOOL isX = (keyLen == 1) && (keyStr[0]=='X') ;
+    if ( isX ) {
+        self.currentFilm = [[MPWMediathekFilm alloc] init];
+        _attributeIndex=0;
     } else {
+        NSMutableArray *container=[[NSMutableArray alloc] init];
         self.keys = container;
+        [self pushContainer:container];
     }
-#ifndef __clang_analyzer__
-    [self pushContainer:container];
-#endif
+}
+
+-(void)pushObject:(id)anObject
+{
+    if ( self.currentFilm) {
+        switch ( _attributeIndex) {
+            case 0:
+                if( [anObject length] > 0 ) {
+                    self.sender=anObject;
+                }
+                self.currentFilm.sender = self.sender;
+                break;
+            case 2:
+                self.currentFilm.title = anObject;
+                break;
+            case 8:
+                self.currentFilm.url = anObject;
+                break;
+        }
+        _attributeIndex++;
+    } else {
+        [super pushObject:anObject];
+    }
 }
 
 -(void)endArray
 {
-    static int i=0;
-    if ( self.currentFilm ) {
-        MPWMediathekFilm *film=[[MPWMediathekFilm alloc] initWithArray:self.currentFilm];
-        if ( i++ < 20) {
-            NSLog(@"self.currentFilm: %@ as object: %@",self.currentFilm,film);
+    if ( _currentFilm) {
+        if ( [self.currentFilm.sender isEqualToString:@"RBB"]) {
+            [self.rows addObject:self.currentFilm];
         }
-        [self.rows addObject:film];
+        self.currentFilm=nil;
+    } else {
+        [super endArray];
     }
-    self.currentFilm=nil;
-    [super endArray];
+}
+
+-(NSArray*)alleSender
+{
+    NSArray *sender=[[self.rows collect] sender];
+    NSSet *unique=[NSSet setWithArray:sender];
+    return [unique allObjects];
 }
 
 -(NSString*)description
 {
     return [NSString stringWithFormat:@"<%@:%p: keys: %@ %d rows>",[self class],self, self.keys,self.rows.count];
 }
+
+
 @end

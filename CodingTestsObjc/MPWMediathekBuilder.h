@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSArray *keys;
 @property (nonatomic,strong) NSMutableArray *rows;
 
+-(NSArray*)alleSender;
 
 @end
 

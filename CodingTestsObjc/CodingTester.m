@@ -11,6 +11,7 @@
 #import "MPWArraysBuilder.h"
 #import "MPWJSONUnarchiver.h"
 #import "MPWMediathekBuilder.h"
+#import "MPWMediathekFilm.h"
 
 @import MPWFoundation;
 
@@ -128,11 +129,41 @@
 {
     MPWMASONParser *parser=[MPWMASONParser parser];
     //    [parser setFrequentStrings:@[ @"hi", @"there", @"comment"]];
-    [parser setFrequentStrings:@[ @"X"]];
+    [parser setFrequentStrings:@[ @"X", @"",
+                                  @"WDR",
+                                  @"ARTE.FR",
+                                  @"NDR",
+                                  @"3Sat",
+                                  @"SRF",
+                                  @"SWR",
+                                  @"MDR",
+                                  @"SRF.Podcast",
+                                  @"ARD",
+                                  @"KiKA",
+                                  @"RBB",
+                                  @"PHOENIX",
+                                  @"BR",
+                                  @"DW",
+                                  @"ORF",
+                                  @"HR",
+                                  @"SR",
+                                  @"ZDF-tivi",
+                                  @"rbtv",
+                                  @"ARTE.DE",
+                                  @"ZDF"]];
     MPWMediathekBuilder *builder=[MPWMediathekBuilder builder];
     [parser setBuilder:builder];
-    NSArray* plistResult = [parser parsedData:json];
-    NSLog(@"Mediathek %@ first film: %@",builder,builder.rows.firstObject);
+    [parser parsedData:json];
+    NSArray *filme=[builder rows];
+    MPWByteStream *Stdout=[MPWByteStream Stdout];
+    for ( MPWMediathekFilm *film in filme) {
+        if ( [film.title containsString:@"Unser Sandm"] && ![film.title containsString:@"Gebä"] ) {
+            [Stdout println:[film description]];
+        }
+    }
+
+//    NSLog(@"Mediathek %@ first film: %@",builder,builder.rows.firstObject);
+//    NSLog(@"Sender %@ ",[builder alleSender]);
     //   NSLog(@"class of dict: '%s'",class_getName(object_getClass(first)));
     //    for (id key in [first allKeys]) {
     //        NSLog(@"key: %@ %p '%s'",key,key,class_getName(object_getClass(key)));
